@@ -1,6 +1,7 @@
 package com.test.jacoco;
 
 import javax.imageio.event.IIOReadWarningListener;
+import java.util.Date;
 
 
 public class HelloWorld {
@@ -50,7 +51,9 @@ public class HelloWorld {
     	 * TODO: You need to complete this method to determine whether  a
     	 * triangle is formed or not when given the input edge a, b and c.
     	 */
-    	return true;
+    	if (a <= 0 || b <= 0 || c <= 0)
+    		return false;
+    	return (a + b > c) && (a + c > b) && (b + c > a);
     }
     public boolean isBirthday(int year, int month, int day) {
     	/**
@@ -58,7 +61,8 @@ public class HelloWorld {
     	 * legitimate date of birth between 1990/01/01 and 2019/10/01 is 
     	 * formed or not when given the input year, month and day.
     	 */
-    	return true;
+		Date d = new Date(year, month, day);
+    	return d.after(new Date(1990, 1, 1)) && d.before(new Date(2019, 1, 1));
     	
     }
     public Double miniCalculator(double a, double b, char op) {
@@ -68,6 +72,13 @@ public class HelloWorld {
     	 * operation: "+","-","*","/". 
     	 */
     	double result = 0.0;
+    	switch (op) {
+			case '+': result = a + b; break;
+			case '-': result = a - b; break;
+			case '*': result = a * b; break;
+			case '/': result = a / b; break;
+			default: ;
+		}
     	return result;
     }
     
